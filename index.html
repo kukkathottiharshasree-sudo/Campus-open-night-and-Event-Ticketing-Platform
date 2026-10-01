@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CampusPass - Event & Ticketing Platform</title>
+    <link rel="stylesheet" href="style.css">
+ 
+    <script src="https://cloudflare.com"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Campus<span>Pass</span></h1>
+            <div class="nav-actions">
+                <button onclick="switchView('explore-view')" class="btn-nav">Explore Events</button>
+                <button onclick="switchView('ticket-view')" class="btn-nav">My Tickets</button>
+                <button onclick="switchView('scanner-view')" class="btn-nav btn-admin">Gate Scanner</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <section id="explore-view" class="view-section active">
+            <div class="section-header">
+                <h2>Upcoming Campus Events</h2>
+                <p>Discover open nights, tech hackathons, and cultural festivals.</p>
+            </div>
+            <div class="event-grid" id="event-container">
+      
+            </div>
+        </section>
+        <section id="ticket-view" class="view-section">
+            <div class="section-header">
+                <h2>Your Digital Ticket Wallet</h2>
+                <p>Present these QR codes at the campus venue entrance gates.</p>
+            </div>
+            <div class="ticket-container" id="my-tickets-container">
+                <p class="empty-state">No tickets booked yet. Go explore upcoming events!</p>
+            </div>
+        </section>
+
+        <section id="scanner-view" class="view-section">
+            <div class="section-header">
+                <h2>Gate Validation Terminal</h2>
+                <p>Authorized personnel validation mode.</p>
+            </div>
+            <div class="scanner-box">
+                <div class="scanner-camera-simulation">
+                    <div class="scan-laser"></div>
+                    <p>📸 Camera Scanning Active...</p>
+                </div>
+                <div class="scanner-controls">
+                    <input type="text" id="manual-scan-input" placeholder="Paste ticket QR code string to simulate scan">
+                    <button onclick="simulateScan()" class="btn-primary">Submit Scan</button>
+                </div>
+                <div id="scan-result" class="scan-result-banner">Ready for verification</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
