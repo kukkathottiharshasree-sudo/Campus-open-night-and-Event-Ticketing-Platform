@@ -1,150 +1,521 @@
-const CAMPUS_EVENTS = [
-    { id: "EVT-101", title: "Engineering Campus Open Night", dept: "Engineering", desc: "Explore labs, prototype exhibits, and experience live autonomous drone demonstrations." },
-    { id: "EVT-102", title: "Annual Cultural Gala", dept: "Arts & Media", desc: "An evening featuring theatrical productions, battle of the bands, and art exhibitions." },
-    { id: "EVT-103", title: "FinTech Hackathon Pitch Final", dept: "Business & CS", desc: "Watch top student startup engineering groups pitch their products to venture panels." }
+const events = [
+  {
+    id: 1,
+
+    title: "NBKRIST Tech Fest",
+
+    category: "technical",
+
+    date: "Oct 15, 2026",
+
+    time: "10:00 AM",
+
+    venue: "Seminar Hall",
+
+    price: 99,
+
+    description:
+      "A technical festival featuring coding,
+      robotics, AI and innovative student projects."
+  },
+
+
+  {
+    id: 2,
+
+    title: "Battle of Bands",
+
+    category: "music",
+
+    date: "Oct 18, 2026",
+
+    time: "6:00 PM",
+
+    venue: "College Auditorium",
+
+    price: 199,
+
+    description:
+      "An exciting musical night featuring
+      talented NBKRIST student bands."
+  },
+
+
+  {
+    id: 3,
+
+    title: "NBKRIST Cultural Fest",
+
+    category: "cultural",
+
+    date: "Oct 21, 2026",
+
+    time: "5:00 PM",
+
+    venue: "Main Ground",
+
+    price: 149,
+
+    description:
+      "Music, dance, food and cultural
+      performances from NBKRIST students."
+  },
+
+
+  {
+    id: 4,
+
+    title: "Inter-College Football",
+
+    category: "sports",
+
+    date: "Oct 24, 2026",
+
+    time: "4:00 PM",
+
+    venue: "College Stadium",
+
+    price: 49,
+
+    description:
+      "Watch the exciting football competition
+      between colleges."
+  },
+
+
+  {
+    id: 5,
+
+    title: "Photography Workshop",
+
+    category: "workshop",
+
+    date: "Oct 26, 2026",
+
+    time: "2:00 PM",
+
+    venue: "Media Lab",
+
+    price: 0,
+
+    description:
+      "Learn photography techniques and
+      creative editing from professionals."
+  },
+
+
+  {
+    id: 6,
+
+    title: "Freshers Night",
+
+    category: "cultural",
+
+    date: "Oct 30, 2026",
+
+    time: "7:00 PM",
+
+    venue: "Open Air Theatre",
+
+    price: 79,
+
+    description:
+      "A memorable welcome event for
+      new NBKRIST students."
+  }
+
 ];
 
-let MY_TICKETS = [];
-let SCANNED_TICKET_REGISTRY = new Set(); 
+let selectedEvent = null;
 
-document.addEventListener("DOMContentLoaded", () => {
-    renderEventCatalog();
-});
+let quantity = 1;
 
-function switchView(viewId) {
-    document.querySelectorAll('.view-section').forEach(view => {
-        view.classList.remove('active');
+let ticketsSold = 0;
+
+let revenue = 0;
+
+function renderEvents() {
+
+  const grid =
+    document.getElementById("eventGrid");
+
+
+  const search =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+
+  const category =
+    document
+      .getElementById("categoryFilter")
+      .value;
+
+
+  const filteredEvents =
+    events.filter(event => {
+
+      const matchesSearch =
+
+        event.title
+          .toLowerCase()
+          .includes(search)||
+
+        event.description
+          .toLowerCase()
+          .includes(search);
+
+
+      const matchesCategory =
+
+        category === "all" ||
+
+        event.category === category;
+
+
+      return (
+        matchesSearch &&
+        matchesCategory
+      );
+
     });
-    const targetView = document.getElementById(viewId);
-    if (targetView) {
-        targetView.classList.add('active');
-    }
-}
 
-function renderEventCatalog() {
-    const container = document.getElementById("event-container");
-    if (!container) return;
-    container.innerHTML = "";
 
-    CAMPUS_EVENTS.forEach(evt => {
-        const card = document.createElement("div");
-        card.className = "event-card";
-        card.innerHTML = `
-            <div class="event-details">
-                <span class="event-badge">${evt.dept}</span>
-                <h3 class="event-title">${evt.title}</h3>
-                <p class="event-desc">${evt.desc}</p>
-                <button onclick="bookTicket('${evt.id}')" class="btn-primary">Register Entry Pass</button>
+  if (filteredEvents.length === 0) {
+
+    grid.innerHTML = `
+
+      <div class="empty">
+
+        <h3>
+          No events found
+        </h3>
+
+        <p>
+          Try another search or category.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+
+  grid.innerHTML =
+
+    filteredEvents.map(event => `
+
+      <article class="event-card">
+
+
+        <div class="event-image">
+
+          ${event.title}
+
+        </div>
+
+
+        <div class="event-body">
+
+
+          <div class="event-meta">
+
+            ${event.category.toUpperCase()}
+
+          </div>
+
+
+          <h3>
+
+            ${event.title}
+
+          </h3>
+
+
+          <p class="event-description">
+
+            ${event.description}
+
+          </p>
+
+
+          <div class="event-info">
+
+            <span>
+               ${event.date}
+            </span>
+
+            <span>
+              ${event.time}
+            </span>
+
+            <span>
+               ${event.venue}
+            </span>
+
+          </div>
+
+
+          <div class="event-footer">
+
+
+            <div
+              class="price ${
+                event.price === 0
+                  ? "free"
+                  : ""
+              }">
+
+              ${
+                event.price === 0
+                  ? "FREE"
+                  : "₹" + event.price
+              }
+
             </div>
-        `;
-        container.appendChild(card);
+
+
+            <button
+              class="book-btn"
+              onclick="openBooking(${event.id})">
+
+              Get Ticket
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `).join("");
+
+}
+
+function openBooking(eventId) {
+
+  selectedEvent =
+    events.find(
+      event => event.id === eventId
+    );
+
+
+  quantity = 1;
+
+
+  document.getElementById(
+    "quantity"
+  ).textContent = quantity;
+
+
+  document.getElementById(
+    "selectedEventName"
+  ).textContent =
+    selectedEvent.title;
+
+
+  updateTotal();
+
+
+  document.getElementById(
+    "bookingModal"
+  ).classList.add("active");
+
+}
+
+function closeModal() {
+
+  document.getElementById(
+    "bookingModal"
+  ).classList.remove("active");
+
+}
+
+
+function changeQuantity(amount) {
+
+  quantity += amount;
+
+  if (quantity < 1) {
+
+    quantity = 1;
+
+  }
+
+  if (quantity > 10) {
+
+    quantity = 10;
+
+  }
+
+  document.getElementById(
+    "quantity"
+  ).textContent = quantity;
+
+  updateTotal();
+
+}
+
+
+function updateTotal() {
+
+  if (!selectedEvent) {
+
+    return;
+
+  }
+
+  const total =
+    selectedEvent.price * quantity;
+
+
+  document.getElementById(
+    "totalPrice"
+  ).textContent =
+
+    total === 0
+      ? "FREE"
+      : "Rs" + total;
+
+}
+
+function confirmBooking(event) {
+
+  event.preventDefault();
+
+
+  const name =
+    document.getElementById(
+      "customerName"
+    ).value;
+
+
+  const email =
+    document.getElementById(
+      "customerEmail"
+    ).value;
+
+
+  const total =
+    selectedEvent.price * quantity;
+
+  ticketsSold += quantity;
+
+  revenue += total;
+
+  updateDashboard();
+
+
+  const ticketNumber =
+
+    "NBKRIST-" +
+
+    Date.now()
+      .toString()
+      .slice(-8);
+
+  document.getElementById(
+    "ticketEvent"
+  ).textContent =
+    selectedEvent.title;
+
+
+  document.getElementById(
+    "ticketName"
+  ).textContent = name;
+
+  document.getElementById(
+    "ticketDate"
+  ).textContent = selectedEvent.date +  " · " + selectedEvent.time;
+
+  document.getElementById(
+    "ticketVenue"
+  ).textContent =
+
+    selectedEvent.venue;
+
+  document.getElementById(
+    "ticketQuantity"
+  ).textContent =
+
+    quantity +
+
+    " ticket(s)";
+
+  document.getElementById(
+    "ticketId"
+  ).textContent =
+    ticketNumber;
+
+  closeModal();
+
+  document.getElementById(
+    "ticketModal"
+  ).classList.add("active");
+
+  document.querySelector("form").reset();
+
+}
+
+function closeTicket() {
+
+  document.getElementById(
+    "ticketModal"
+  ).classList.remove("active");
+
+}
+
+function updateDashboard() {
+
+  document.getElementById(
+    "ticketsSold"
+  ).textContent =
+    ticketsSold;
+
+  document.getElementById(
+    "ticketsStat"
+  ).textContent =
+    ticketsSold;
+
+
+  document.getElementById(
+    "revenue"
+  ).textContent =
+    "₹" + revenue;
+
+}
+
+function scrollToEvents() {
+
+  document
+    .getElementById("events")
+    .scrollIntoView({
+      behavior: "smooth"
     });
+
 }
 
-function bookTicket(eventId) {
-    const selectedEvent = CAMPUS_EVENTS.find(e => e.id === eventId);
-    
-    if(MY_TICKETS.some(t => t.eventId === eventId)) {
-        alert("Account Notification: You have already reserved an entry ticket pass for this specific event.");
-        return;
-    }
+function scrollToDashboard() {
 
-    const ticketUID = `TXN-${eventId}-${Math.floor(100000 + Math.random() * 900000)}`;
-    const ticketObject = {
-        ticketId: ticketUID,
-        eventId: selectedEvent.id,
-        eventTitle: selectedEvent.title,
-        timestamp: new Date().toLocaleString()
-    };
-
-    MY_TICKETS.push(ticketObject);
-    alert(`Success! Entry registration booked for ${selectedEvent.title}. Check your Digital Ticket Wallet.`);
-    
-    renderTicketWallet();
-    switchView('ticket-view');
-}
-
-function renderTicketWallet() {
-    const walletContainer = document.getElementById("my-tickets-container");
-    if (!walletContainer) return;
-    
-    if(MY_TICKETS.length === 0) {
-        walletContainer.innerHTML = `<p class="empty-state">No tickets booked yet.</p>`;
-        return;
-    }
-
-    walletContainer.innerHTML = "";
-    
-    MY_TICKETS.forEach(ticket => {
-        const card = document.createElement("div");
-        card.className = "ticket-card";
-        
-        const infoDiv = document.createElement("div");
-        infoDiv.innerHTML = `
-            <h3>${ticket.eventTitle}</h3>
-            <p style="color: #4f46e5; font-weight: bold; font-size: 0.9rem; margin-top:0.5rem;">Copy Code for Scanner: ${ticket.ticketId}</p>
-            <p style="color: #9ca3af; font-size: 0.75rem; margin-top:0.25rem;">Issued: ${ticket.timestamp}</p>
-        `;
-
-        const qrContainer = document.createElement("div");
-        qrContainer.className = "qr-wrapper";
-        qrContainer.id = `qr-${ticket.ticketId}`;
-        qrContainer.style.minWidth = "90px";
-        qrContainer.style.minHeight = "90px";
-        qrContainer.style.display = "flex";
-        qrContainer.style.alignItems = "center";
-        qrContainer.style.justifyContent = "center";
-
-        card.appendChild(infoDiv);
-        card.appendChild(qrContainer);
-        walletContainer.appendChild(card);
-
-        try {
-            if (typeof QRCode !== 'undefined') {
-                new QRCode(document.getElementById(`qr-${ticket.ticketId}`), {
-                    text: ticket.ticketId,
-                    width: 90,
-                    height: 90,
-                    correctLevel: QRCode.CorrectLevel.H
-                });
-            } else {
-                qrContainer.innerHTML = "<small style='color:#6b7280;'>[QR Preview]</small>";
-            }
-        } catch (err) {
-            qrContainer.innerHTML = "<small style='color:#6b7280;'>[QR Preview]</small>";
-        }
+  document
+    .getElementById("dashboard")
+    .scrollIntoView({
+      behavior: "smooth"
     });
+
 }
 
-function simulateScan() {
-    const inputField = document.getElementById("manual-scan-input");
-    const resultBanner = document.getElementById("scan-result");
-    if (!inputField || !resultBanner) return;
+document.getElementById(
+  "totalEvents"
+).textContent = events.length;
 
-    const rawValue = inputField.value.trim();
+document.getElementById(
+  "eventCount"
+).textContent = events.length;
 
-    if(!rawValue) {
-        alert("Please paste a ticket verification ID to test.");
-        return;
-    }
-
-    const ticketExists = MY_TICKETS.some(t => t.ticketId === rawValue);
-
-    if (!ticketExists) {
-        resultBanner.textContent = " INVALID TICKET - Access Denied";
-        resultBanner.style.backgroundColor = "#fee2e2";
-        resultBanner.style.color = "#ef4444";
-    } else if (SCANNED_TICKET_REGISTRY.has(rawValue)) {
-        resultBanner.textContent = "DUPLICATE SCANNED - Fraud Risk";
-        resultBanner.style.backgroundColor = "#fef3c7";
-        resultBanner.style.color = "#d97706";
-    } else {
-      
-        SCANNED_TICKET_REGISTRY.add(rawValue);
-        resultBanner.textContent = "VALID ENTRY PASS - Access Granted";
-        resultBanner.style.backgroundColor = "#d1fae5";
-        resultBanner.style.color = "#10b981";
-    }
-    
-    inputField.value = ""; 
-}
+renderEvents();
