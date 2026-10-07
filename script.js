@@ -415,19 +415,16 @@ function closeTicket() {
 }
 
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    document.getElementById("eventCount")
-      .textContent = events.length;
+  document.getElementById("eventCount").textContent = events.length;
+  document.getElementById("totalEvents").textContent = events.length;
 
+  document.getElementById("bookingForm").addEventListener(
+    "submit",
+    confirmBooking
+  );
 
-    document.getElementById("totalEvents")
-      .textContent = events.length;
+  renderEvents();
 
-
-    renderEvents();
-
-  }
-);
+});
