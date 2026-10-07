@@ -1,64 +1,447 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>CampusPass - Event & Ticketing Platform</title>
-    <link rel="stylesheet" href="style.css">
- 
-    <script src="https://cloudflare.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NBKRIST - Campus Event Ticketing</title>
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <h1 class="logo">Campus<span>Pass</span></h1>
-            <div class="nav-actions">
-                <button onclick="switchView('explore-view')" class="btn-nav">Explore Events</button>
-                <button onclick="switchView('ticket-view')" class="btn-nav">My Tickets</button>
-                <button onclick="switchView('scanner-view')" class="btn-nav btn-admin">Gate Scanner</button>
-            </div>
+  <nav>
+    <div class="logo">
+      NBKRIST <span>Events</span>
+    </div>
+
+    <div class="nav-links">
+      <button onclick="scrollToEvents()">Events</button>
+
+      <button onclick="scrollToDashboard()">
+        Organizer
+      </button>
+
+      <button
+        class="nav-btn"
+        onclick="scrollToEvents()">
+        Get Tickets
+      </button>
+    </div>
+  </nav>
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="college-label">
+        N.B.K.R INSTITUTE OF SCIENCE AND TECHNOLOGY
+      </div>
+
+      <div class="badge">
+        🎓 Official Campus Event Platform
+      </div>
+
+      <h1>
+        Discover what's<br>
+        <span>happening at NBKRIST.</span>
+      </h1>
+
+      <p>
+        Explore technical events, cultural fests, workshops,
+        sports and student activities at N.B.K.R Institute
+        of Science and Technology.
+      </p>
+
+      <div class="hero-actions">
+
+        <button
+          class="btn btn-primary"
+          onclick="scrollToEvents()">
+          Explore Events →
+        </button>
+
+        <button
+          class="btn btn-outline"
+          onclick="scrollToDashboard()">
+          Organizer Dashboard
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <section class="stats">
+
+    <div class="container stats-grid">
+
+      <div class="stat">
+        <h3 id="eventCount">6</h3>
+        <p>Events</p>
+      </div>
+
+      <div class="stat">
+        <h3>12K+</h3>
+        <p>Students</p>
+      </div>
+
+      <div class="stat">
+        <h3 id="ticketsStat">0</h3>
+        <p>Tickets Sold</p>
+      </div>
+
+      <div class="stat">
+        <h3>30+</h3>
+        <p>Organizers</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="events">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <h2>Upcoming Events</h2>
+
+        <p>
+          Find exciting events happening at NBKRIST.
+        </p>
+
+      </div>
+
+      <div class="filters">
+
+        <div class="search">
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search events..."
+            oninput="renderEvents()">
+
         </div>
-    </nav>
 
-    <main class="main-content">
-        
-        <section id="explore-view" class="view-section active">
-            <div class="section-header">
-                <h2>Upcoming Campus Events</h2>
-                <p>Discover open nights, tech hackathons, and cultural festivals.</p>
-            </div>
-            <div class="event-grid" id="event-container">
-      
-            </div>
-        </section>
-        <section id="ticket-view" class="view-section">
-            <div class="section-header">
-                <h2>Your Digital Ticket Wallet</h2>
-                <p>Present these QR codes at the campus venue entrance gates.</p>
-            </div>
-            <div class="ticket-container" id="my-tickets-container">
-                <p class="empty-state">No tickets booked yet. Go explore upcoming events!</p>
-            </div>
-        </section>
 
-        <section id="scanner-view" class="view-section">
-            <div class="section-header">
-                <h2>Gate Validation Terminal</h2>
-                <p>Authorized personnel validation mode.</p>
-            </div>
-            <div class="scanner-box">
-                <div class="scanner-camera-simulation">
-                    <div class="scan-laser"></div>
-                    <p>📸 Camera Scanning Active...</p>
-                </div>
-                <div class="scanner-controls">
-                    <input type="text" id="manual-scan-input" placeholder="Paste ticket QR code string to simulate scan">
-                    <button onclick="simulateScan()" class="btn-primary">Submit Scan</button>
-                </div>
-                <div id="scan-result" class="scan-result-banner">Ready for verification</div>
-            </div>
-        </section>
-    </main>
+        <select
+          id="categoryFilter"
+          onchange="renderEvents()">
 
-    <script src="app.js"></script>
+          <option value="all">
+            All Categories
+          </option>
+
+          <option value="technical">
+            Technical
+          </option>
+
+          <option value="music">
+            Music
+          </option>
+
+          <option value="sports">
+            Sports
+          </option>
+
+          <option value="cultural">
+            Cultural
+          </option>
+
+          <option value="workshop">
+            Workshop
+          </option>
+
+        </select>
+
+      </div>
+
+      <div
+        class="event-grid"
+        id="eventGrid">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section
+    class="dashboard"
+    id="dashboard">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <h2>Organizer Dashboard</h2>
+
+        <p>
+          Track NBKRIST events and ticket sales.
+        </p>
+
+      </div>
+
+
+      <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+          <small>Total Events</small>
+
+          <h3 id="totalEvents">
+            6
+          </h3>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+          <small>Tickets Sold</small>
+
+          <h3 id="ticketsSold">
+            0
+          </h3>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+          <small>Revenue</small>
+
+          <h3 id="revenue">
+            ₹0
+          </h3>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <div
+    class="modal-overlay"
+    id="bookingModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <h2>
+            Book Tickets
+          </h2>
+
+          <p id="selectedEventName"></p>
+
+        </div>
+
+        <button
+          class="close"
+          onclick="closeModal()">
+          ×
+        </button>
+
+      </div>
+
+
+      <form
+        onsubmit="confirmBooking(event)">
+
+        <div class="form-group">
+
+          <label>
+            Full Name
+          </label>
+
+          <input
+            id="customerName"
+            type="text"
+            placeholder="Enter your name"
+            required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Email
+          </label>
+
+          <input
+            id="customerEmail"
+            type="email"
+            placeholder="student@example.com"
+            required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Number of Tickets
+          </label>
+
+          <div class="quantity">
+
+            <button
+              type="button"
+              onclick="changeQuantity(-1)">
+              −
+            </button>
+
+            <span id="quantity">
+              1
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQuantity(1)">
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="total">
+
+          <span>
+            Total
+          </span>
+
+          <span id="totalPrice">
+            ₹0
+          </span>
+
+        </div>
+
+
+        <button
+          class="confirm-btn"
+          type="submit">
+
+          Confirm Booking
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div
+    class="modal-overlay"
+    id="ticketModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <h2>
+          Your Ticket
+        </h2>
+
+        <button
+          class="close"
+          onclick="closeTicket()">
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="ticket">
+
+        <h2>
+          NBKRIST
+        </h2>
+
+        <p class="ticket-college">
+          N.B.K.R Institute of Science and Technology
+        </p>
+
+
+        <div
+          class="ticket-event"
+          id="ticketEvent">
+        </div>
+
+
+        <div class="ticket-details">
+
+          <div id="ticketName"></div>
+
+          <div id="ticketDate"></div>
+
+          <div id="ticketVenue"></div>
+
+          <div id="ticketQuantity"></div>
+
+        </div>
+
+
+        <div class="qr">
+        </div>
+
+
+        <div
+          class="ticket-id"
+          id="ticketId">
+        </div>
+
+
+        <br>
+
+
+        <button
+          class="book-btn"
+          onclick="window.print()">
+
+          Print Ticket
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+    
+  <footer>
+
+    <strong>
+      N.B.K.R Institute of Science and Technology
+    </strong>
+
+    <p>
+      NBKRIST Campus Event Ticketing Platform
+    </p>
+
+    <p>
+      © 2026 NBKRIST. All Rights Reserved.
+    </p>
+
+  </footer>
+
+  <script src="js/script.js"></script>
+
 </body>
+
 </html>
