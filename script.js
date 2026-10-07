@@ -15,8 +15,7 @@ const events = [
     price: 99,
 
     description:
-      "A technical festival featuring coding,
-      robotics, AI and innovative student projects."
+      "A technical festival featuring coding, robotics, AI and innovative student projects."
   },
 
 
@@ -36,8 +35,7 @@ const events = [
     price: 199,
 
     description:
-      "An exciting musical night featuring
-      talented NBKRIST student bands."
+      "An exciting musical night featuring talented NBKRIST student bands."
   },
 
 
@@ -57,8 +55,7 @@ const events = [
     price: 149,
 
     description:
-      "Music, dance, food and cultural
-      performances from NBKRIST students."
+      "Music, dance, food and cultural performances from NBKRIST students."
   },
 
 
@@ -78,8 +75,7 @@ const events = [
     price: 49,
 
     description:
-      "Watch the exciting football competition
-      between colleges."
+      "Watch the exciting football competition between colleges."
   },
 
 
@@ -99,8 +95,7 @@ const events = [
     price: 0,
 
     description:
-      "Learn photography techniques and
-      creative editing from professionals."
+      "Learn photography techniques and creative editing from professionals."
   },
 
 
@@ -120,8 +115,7 @@ const events = [
     price: 79,
 
     description:
-      "A memorable welcome event for
-      new NBKRIST students."
+      "A memorable welcome event for new NBKRIST students."
   }
 
 ];
