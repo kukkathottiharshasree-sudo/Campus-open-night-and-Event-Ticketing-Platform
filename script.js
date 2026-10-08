@@ -74,12 +74,12 @@ let selectedEvent = null;
 let quantity = 1;
 
 
-// Load saved ticket information
+// Load saved values
 let ticketsSold =
-  Number(localStorage.getItem("ticketsSold")) || 0;
+  Number(localStorage.getItem("nbkrist_ticketsSold")) || 0;
 
 let revenue =
-  Number(localStorage.getItem("revenue")) || 0;
+  Number(localStorage.getItem("nbkrist_revenue")) || 0;
 
 
 
@@ -346,7 +346,7 @@ function confirmBooking(event) {
     document.getElementById("bookingForm");
 
 
-  // Prevent duplicate booking submissions
+  // Prevent duplicate submission
   if (form.dataset.submitting === "true") {
     return;
   }
@@ -376,16 +376,15 @@ function confirmBooking(event) {
   revenue += total;
 
 
-  // Save ticket information
-  // so it survives page refresh
+  // Save values permanently in this browser
   localStorage.setItem(
-    "ticketsSold",
+    "nbkrist_ticketsSold",
     ticketsSold
   );
 
 
   localStorage.setItem(
-    "revenue",
+    "nbkrist_revenue",
     revenue
   );
 
@@ -471,8 +470,7 @@ document.addEventListener(
       .textContent = events.length;
 
 
-    // Show saved ticket information
-    // when the website is opened
+    // Display saved ticket count
     document.getElementById("ticketsSold")
       .textContent = ticketsSold;
 
@@ -481,6 +479,7 @@ document.addEventListener(
       .textContent = ticketsSold;
 
 
+    // Display saved revenue
     document.getElementById("revenue")
       .textContent = "Rs" + revenue;
 
@@ -488,7 +487,7 @@ document.addEventListener(
     renderEvents();
 
 
-    // Register submit handler only once
+    // Register submit handler ONLY ONCE
     document.getElementById("bookingForm")
       .addEventListener(
         "submit",
