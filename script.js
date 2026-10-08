@@ -73,8 +73,6 @@ let selectedEvent = null;
 
 let quantity = 1;
 
-
-// Load saved values
 let ticketsSold =
   Number(localStorage.getItem("nbkrist_ticketsSold")) || 0;
 
@@ -442,7 +440,6 @@ function confirmBooking(event) {
   form.reset();
 
 
-  // Allow another booking
   form.dataset.submitting = "false";
 
 }
@@ -469,8 +466,6 @@ document.addEventListener(
     document.getElementById("totalEvents")
       .textContent = events.length;
 
-
-    // Display saved ticket count
     document.getElementById("ticketsSold")
       .textContent = ticketsSold;
 
@@ -479,15 +474,12 @@ document.addEventListener(
       .textContent = ticketsSold;
 
 
-    // Display saved revenue
     document.getElementById("revenue")
       .textContent = "Rs" + revenue;
 
 
     renderEvents();
 
-
-    // Register submit handler ONLY ONCE
     document.getElementById("bookingForm")
       .addEventListener(
         "submit",
