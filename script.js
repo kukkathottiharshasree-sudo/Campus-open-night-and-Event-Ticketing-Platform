@@ -68,33 +68,51 @@ const events = [
 
 ];
 
+
 let selectedEvent = null;
+
 let quantity = 1;
-let ticketsSold = 0;
-let revenue = 0;
+
+
+// Load saved ticket information
+let ticketsSold =
+  Number(localStorage.getItem("ticketsSold")) || 0;
+
+let revenue =
+  Number(localStorage.getItem("revenue")) || 0;
+
 
 
 function showEvents() {
-  const section = document.getElementById("events");
+
+  const section =
+    document.getElementById("events");
 
   section.scrollIntoView({
     behavior: "smooth"
   });
+
 }
+
 
 
 function showDashboard() {
-  const section = document.getElementById("dashboard");
+
+  const section =
+    document.getElementById("dashboard");
 
   section.scrollIntoView({
     behavior: "smooth"
   });
+
 }
+
 
 
 function renderEvents() {
 
-  const grid = document.getElementById("eventGrid");
+  const grid =
+    document.getElementById("eventGrid");
 
   const search =
     document.getElementById("searchInput")
@@ -124,7 +142,8 @@ function renderEvents() {
         event.category === category;
 
 
-      return matchesSearch && matchesCategory;
+      return matchesSearch &&
+             matchesCategory;
 
     });
 
@@ -153,19 +172,23 @@ function renderEvents() {
             ${event.title}
           </div>
 
+
           <div class="event-body">
 
             <div class="event-meta">
               ${event.category.toUpperCase()}
             </div>
 
+
             <h3>
               ${event.title}
             </h3>
 
+
             <p class="event-description">
               ${event.description}
             </p>
+
 
             <div class="event-info">
 
@@ -183,6 +206,7 @@ function renderEvents() {
 
             </div>
 
+
             <div class="event-footer">
 
               <div class="price">
@@ -194,6 +218,7 @@ function renderEvents() {
                 }
 
               </div>
+
 
               <button
                 class="book-btn"
@@ -211,14 +236,18 @@ function renderEvents() {
       `;
 
     }).join("");
+
 }
+
 
 
 function openBooking(id) {
 
   selectedEvent =
     events.find(function(event) {
+
       return event.id === id;
+
     });
 
 
@@ -243,7 +272,9 @@ function openBooking(id) {
 
   document.getElementById("bookingModal")
     .classList.add("active");
+
 }
+
 
 
 function closeBooking() {
@@ -252,6 +283,7 @@ function closeBooking() {
     .classList.remove("active");
 
 }
+
 
 
 function changeQuantity(amount) {
@@ -274,7 +306,9 @@ function changeQuantity(amount) {
 
 
   updateTotal();
+
 }
+
 
 
 function updateTotal() {
@@ -293,7 +327,9 @@ function updateTotal() {
       total === 0
         ? "FREE"
         : "₹" + total;
+
 }
+
 
 
 function confirmBooking(event) {
@@ -340,6 +376,20 @@ function confirmBooking(event) {
   revenue += total;
 
 
+  // Save ticket information
+  // so it survives page refresh
+  localStorage.setItem(
+    "ticketsSold",
+    ticketsSold
+  );
+
+
+  localStorage.setItem(
+    "revenue",
+    revenue
+  );
+
+
   document.getElementById("ticketsSold")
     .textContent = ticketsSold;
 
@@ -368,7 +418,8 @@ function confirmBooking(event) {
 
 
   document.getElementById("ticketVenue")
-    .textContent = selectedEvent.venue;
+    .textContent =
+      selectedEvent.venue;
 
 
   document.getElementById("ticketQuantity")
@@ -392,9 +443,11 @@ function confirmBooking(event) {
   form.reset();
 
 
-  // Allow the next booking
+  // Allow another booking
   form.dataset.submitting = "false";
+
 }
+
 
 
 function closeTicket() {
@@ -405,24 +458,42 @@ function closeTicket() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function () {
 
-  document.getElementById("eventCount")
-    .textContent = events.length;
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
-
-  document.getElementById("totalEvents")
-    .textContent = events.length;
-
-
-  renderEvents();
+    document.getElementById("eventCount")
+      .textContent = events.length;
 
 
-  // Submit handler is registered only once
-  document.getElementById("bookingForm")
-    .addEventListener(
-      "submit",
-      confirmBooking
-    );
+    document.getElementById("totalEvents")
+      .textContent = events.length;
 
-});
+
+    // Show saved ticket information
+    // when the website is opened
+    document.getElementById("ticketsSold")
+      .textContent = ticketsSold;
+
+
+    document.getElementById("ticketsStat")
+      .textContent = ticketsSold;
+
+
+    document.getElementById("revenue")
+      .textContent = "Rs" + revenue;
+
+
+    renderEvents();
+
+
+    // Register submit handler only once
+    document.getElementById("bookingForm")
+      .addEventListener(
+        "submit",
+        confirmBooking
+      );
+
+  }
+);
