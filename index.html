@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <title>NBKRIST Events</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,12 +16,17 @@
     <div class="nav-links">
       <button onclick="showEvents()">Events</button>
       <button onclick="showDashboard()">Organizer</button>
-      <button class="nav-ticket" onclick="showEvents()">
+
+      <button
+        class="nav-ticket"
+        onclick="showEvents()"
+      >
         Get Tickets
       </button>
     </div>
 
   </nav>
+
 
   <header class="hero">
 
@@ -49,11 +53,17 @@
 
       <div class="hero-buttons">
 
-        <button class="primary-button" onclick="showEvents()">
+        <button
+          class="primary-button"
+          onclick="showEvents()"
+        >
           Explore Events →
         </button>
 
-        <button class="secondary-button" onclick="showDashboard()">
+        <button
+          class="secondary-button"
+          onclick="showDashboard()"
+        >
           Organizer Dashboard
         </button>
 
@@ -62,6 +72,8 @@
     </div>
 
   </header>
+
+
   <section class="statistics">
 
     <div class="stat">
@@ -85,6 +97,8 @@
     </div>
 
   </section>
+
+
   <section id="events" class="events-section">
 
     <div class="container">
@@ -99,6 +113,7 @@
 
       </div>
 
+
       <div class="filters">
 
         <input
@@ -107,6 +122,7 @@
           placeholder="Search events..."
           oninput="renderEvents()"
         >
+
 
         <select
           id="categoryFilter"
@@ -140,6 +156,7 @@
         </select>
 
       </div>
+
 
       <div
         class="event-grid"
@@ -224,7 +241,9 @@
         ×
       </button>
 
+
       <h2>Book Tickets</h2>
+
 
       <p
         id="selectedEventName"
@@ -232,7 +251,8 @@
       ></p>
 
 
-      <form id="bookingForm" onsubmit="confirmBooking(event)">
+      <!-- IMPORTANT: no onsubmit here -->
+      <form id="bookingForm">
 
         <label>
           Full Name
@@ -262,6 +282,7 @@
           Number of Tickets
         </label>
 
+
         <div class="quantity">
 
           <button
@@ -271,9 +292,11 @@
             −
           </button>
 
+
           <span id="quantity">
             1
           </span>
+
 
           <button
             type="button"
@@ -326,19 +349,24 @@
         ×
       </button>
 
+
       <h2 class="ticket-logo">
         NBKRIST
       </h2>
+
 
       <p>
         N.B.K.R Institute of Science and Technology
       </p>
 
+
       <hr>
+
 
       <h3 id="ticketEvent">
         Event
       </h3>
+
 
       <div class="ticket-details">
 
@@ -352,14 +380,17 @@
 
       </div>
 
+
       <div class="fake-qr">
         NBKRIST
       </div>
+
 
       <div
         id="ticketId"
         class="ticket-id"
       ></div>
+
 
       <button
         class="print-button"
@@ -388,6 +419,7 @@
     </p>
 
   </footer>
+
 
   <script src="script.js"></script>
 
