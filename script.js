@@ -68,45 +68,33 @@ const events = [
 
 ];
 
-
 let selectedEvent = null;
-
 let quantity = 1;
-
 let ticketsSold = 0;
-
 let revenue = 0;
 
 
-
 function showEvents() {
-
-  const section =
-    document.getElementById("events");
+  const section = document.getElementById("events");
 
   section.scrollIntoView({
     behavior: "smooth"
   });
-
 }
 
 
 function showDashboard() {
-
-  const section =
-    document.getElementById("dashboard");
+  const section = document.getElementById("dashboard");
 
   section.scrollIntoView({
     behavior: "smooth"
   });
-
 }
 
 
 function renderEvents() {
 
-  const grid =
-    document.getElementById("eventGrid");
+  const grid = document.getElementById("eventGrid");
 
   const search =
     document.getElementById("searchInput")
@@ -136,8 +124,7 @@ function renderEvents() {
         event.category === category;
 
 
-      return matchesSearch &&
-             matchesCategory;
+      return matchesSearch && matchesCategory;
 
     });
 
@@ -163,49 +150,38 @@ function renderEvents() {
         <div class="event-card">
 
           <div class="event-image">
-
             ${event.title}
-
           </div>
-
 
           <div class="event-body">
 
             <div class="event-meta">
-
               ${event.category.toUpperCase()}
-
             </div>
-
 
             <h3>
               ${event.title}
             </h3>
 
-
             <p class="event-description">
-
               ${event.description}
-
             </p>
-
 
             <div class="event-info">
 
               <span>
-                 ${event.date}
+                ${event.date}
               </span>
 
               <span>
-                 ${event.time}
+                ${event.time}
               </span>
 
               <span>
-                 ${event.venue}
+                ${event.venue}
               </span>
 
             </div>
-
 
             <div class="event-footer">
 
@@ -219,14 +195,11 @@ function renderEvents() {
 
               </div>
 
-
               <button
                 class="book-btn"
                 onclick="openBooking(${event.id})"
               >
-
                 Get Ticket
-
               </button>
 
             </div>
@@ -238,18 +211,14 @@ function renderEvents() {
       `;
 
     }).join("");
-
 }
-
 
 
 function openBooking(id) {
 
   selectedEvent =
     events.find(function(event) {
-
       return event.id === id;
-
     });
 
 
@@ -274,9 +243,7 @@ function openBooking(id) {
 
   document.getElementById("bookingModal")
     .classList.add("active");
-
 }
-
 
 
 function closeBooking() {
@@ -285,6 +252,7 @@ function closeBooking() {
     .classList.remove("active");
 
 }
+
 
 function changeQuantity(amount) {
 
@@ -306,7 +274,6 @@ function changeQuantity(amount) {
 
 
   updateTotal();
-
 }
 
 
@@ -326,7 +293,6 @@ function updateTotal() {
       total === 0
         ? "FREE"
         : "₹" + total;
-
 }
 
 
@@ -338,6 +304,19 @@ function confirmBooking(event) {
   if (!selectedEvent) {
     return;
   }
+
+
+  const form =
+    document.getElementById("bookingForm");
+
+
+  // Prevent duplicate booking submissions
+  if (form.dataset.submitting === "true") {
+    return;
+  }
+
+
+  form.dataset.submitting = "true";
 
 
   const name =
@@ -354,7 +333,9 @@ function confirmBooking(event) {
     selectedEvent.price * quantity;
 
 
+  // Add tickets only once
   ticketsSold += quantity;
+
 
   revenue += total;
 
@@ -380,18 +361,25 @@ function confirmBooking(event) {
 
 
   document.getElementById("ticketDate")
-    .textContent = selectedEvent.date + " · " +selectedEvent.time;
+    .textContent =
+      selectedEvent.date +
+      " · " +
+      selectedEvent.time;
+
 
   document.getElementById("ticketVenue")
-    .textContent =selectedEvent.venue;
+    .textContent = selectedEvent.venue;
 
 
   document.getElementById("ticketQuantity")
-    .textContent =quantity +" ticket(s)";
+    .textContent =
+      quantity + " ticket(s)";
 
 
   document.getElementById("ticketId")
-    .textContent = "NBKRIST-" + Date.now().toString().slice(-8);
+    .textContent =
+      "NBKRIST-" +
+      Date.now().toString().slice(-8);
 
 
   closeBooking();
@@ -401,9 +389,11 @@ function confirmBooking(event) {
     .classList.add("active");
 
 
-  document.getElementById("bookingForm")
-    .reset();
+  form.reset();
 
+
+  // Allow the next booking
+  form.dataset.submitting = "false";
 }
 
 
@@ -417,9 +407,22 @@ function closeTicket() {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  document.getElementById("eventCount").textContent = events.length;
-  document.getElementById("totalEvents").textContent = events.length;
+  document.getElementById("eventCount")
+    .textContent = events.length;
+
+
+  document.getElementById("totalEvents")
+    .textContent = events.length;
+
 
   renderEvents();
+
+
+  // Submit handler is registered only once
+  document.getElementById("bookingForm")
+    .addEventListener(
+      "submit",
+      confirmBooking
+    );
 
 });
