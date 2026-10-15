@@ -57,11 +57,11 @@ select {
 }
 
 .nav-links button:hover {
-  color: #6847f5;
+  color: #3563e9;
 }
 
 .nav-ticket {
-  background: #6847f5 !important;
+  background:	#3563e9!important;
   color: white !important;
 
   padding: 11px 18px;
@@ -145,7 +145,7 @@ select {
 
 .primary-button {
   background: white;
-  color: #6847f5;
+  color: #3563e9;
 
   padding: 14px 22px;
 
@@ -195,7 +195,7 @@ select {
 }
 
 .stat h2 {
-  color: #6847f5;
+  color: #3563e9;
   font-size: 32px;
 }
 
@@ -358,7 +358,7 @@ select {
 }
 
 .event-meta {
-  color: #6847f5;
+  color: #3563e9;
 
   font-size: 12px;
 
@@ -414,7 +414,7 @@ select {
 }
 
 .book-btn {
-  background: #6847f5;
+  background: #3563e9;
 
   color: white;
 
@@ -540,7 +540,7 @@ select {
 }
 
 .selected-event {
-  color: #6847f5;
+  color:#3563e9;
 
   font-weight: bold;
 
@@ -590,7 +590,7 @@ select {
 
   background: #eeeaff;
 
-  color: #6847f5;
+  color:#3563e9;
 
   font-size: 20px;
 
@@ -624,7 +624,7 @@ select {
 
   border-radius: 8px;
 
-  background: #6847f5;
+  background: #3563e9;
 
   color: white;
 
@@ -639,7 +639,7 @@ select {
 }
 
 .ticket-logo {
-  color: #6847f5;
+  color: 	#3563e9;
 
   font-size: 28px;
 
