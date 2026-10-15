@@ -177,7 +177,7 @@ select {
 
   grid-template-columns: repeat(4, 1fr);
 
-  background:#e6e6fa;
+  background: #800020;
 
   border-bottom: 1px solid #e5e2ee;
 }
