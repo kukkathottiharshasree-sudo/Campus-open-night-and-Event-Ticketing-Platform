@@ -740,3 +740,73 @@ body {
 .events-section .book-btn:hover {
   background-color: #32000c !important;
 }
+/* 1. Page background */
+body,
+.navbar {
+  background-color: #ffe4e1 !important;
+}
+
+/* 2. Statistics cards: 6 Events, 12K+ Students,
+      15 Tickets Sold, 30+ Organizers */
+.statistics,
+.stat {
+  background-color: #ffb6c1 !important;
+}
+
+.stat {
+  color: #4a0012 !important;
+  border-color: #f08ca0 !important;
+}
+
+.stat h2 {
+  color: #800020 !important;
+}
+
+.stat p {
+  color: #4a0012 !important;
+}
+
+/* 3. Upcoming Events cards */
+.event-card,
+.event-body {
+  background-color: #98ff98 !important;
+}
+
+.event-body h3 {
+  color: #4a0012;
+}
+
+.event-description,
+.event-info {
+  color: #333333;
+}
+
+/* 4. Get Ticket and main action buttons */
+.nav-ticket,
+.book-btn,
+.primary-button,
+.confirm-button,
+.print-button {
+  background: #4a0012 !important;
+  background-color: #4a0012 !important;
+  color: #ffffff !important;
+  border-color: #4a0012 !important;
+}
+
+/* 5. Button hover */
+.nav-ticket:hover,
+.book-btn:hover,
+.primary-button:hover,
+.confirm-button:hover,
+.print-button:hover {
+  background: #32000c !important;
+  background-color: #32000c !important;
+  color: #ffffff !important;
+  border-color: #32000c !important;
+}
+
+/* Keep ticket quantity controls unchanged */
+.quantity button {
+  background: #eeeaff !important;
+  color: #3563e9 !important;
+}
