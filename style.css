@@ -715,3 +715,28 @@ body {
 .events-section .book-btn:hover {
   background-color: #32000c !important;
 }
+
+.events-section .event-card,
+.events-section .event-body {
+  background-color: #98ff98 !important;
+}
+
+/* Event text */
+.events-section .event-body h3 {
+  color: #4a0012;
+}
+
+.events-section .event-description,
+.events-section .event-info {
+  color: #333333;
+}
+
+/* Get Ticket button - Dark Burgundy */
+.events-section .book-btn {
+  background-color: #4a0012 !important;
+  color: #ffffff !important;
+}
+
+.events-section .book-btn:hover {
+  background-color: #32000c !important;
+}
