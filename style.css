@@ -810,3 +810,32 @@ body,
   background: #eeeaff !important;
   color: #3563e9 !important;
 }
+/* Page background - Misty Rose */
+body {
+  background-color: #ffe4e1;
+}
+
+/* Upcoming Events section background - Mint Green */
+.events-section {
+  background-color: #98ff98 !important;
+}
+
+/* Event cards remain WHITE */
+.events-section .event-card {
+  background-color: #ffffff !important;
+}
+
+/* Event card content remains WHITE */
+.events-section .event-body {
+  background-color: #ffffff !important;
+}
+
+/* Get Ticket buttons - Dark Burgundy */
+.events-section .book-btn {
+  background-color: #4a0012 !important;
+  color: #ffffff !important;
+}
+
+.events-section .book-btn:hover {
+  background-color: #32000c !important;
+}
