@@ -839,3 +839,64 @@ body {
 .events-section .book-btn:hover {
   background-color: #32000c !important;
 }
+
+/* 1. Overall page background: Misty Rose */
+body,
+.navbar {
+  background: #ffe4e1 !important;
+}
+
+/* 2. Statistics strip: Pink */
+.statistics,
+.stat {
+  background: #ffb6c1 !important;
+}
+
+.stat {
+  color: #4a0012 !important;
+  border-color: #f08ca0 !important;
+}
+
+.stat h2 {
+  color: #800020 !important;
+}
+
+.stat p {
+  color: #4a0012 !important;
+}
+
+/* 3. Upcoming Events section background: Mint Green
+   Keep individual event cards WHITE */
+.events-section {
+  background: #98ff98 !important;
+}
+
+.events-section .event-card {
+  background: #ffffff !important;
+}
+
+.events-section .event-body {
+  background: #ffffff !important;
+}
+
+/* 4. Get Ticket buttons: Dark Burgundy */
+.nav-ticket,
+.book-btn,
+.primary-button,
+.confirm-button,
+.print-button {
+  background: #4a0012 !important;
+  color: #ffffff !important;
+  border-color: #4a0012 !important;
+}
+
+/* 5. Hover buttons: Deeper Burgundy */
+.nav-ticket:hover,
+.book-btn:hover,
+.primary-button:hover,
+.confirm-button:hover,
+.print-button:hover {
+  background: #32000c !important;
+  color: #ffffff !important;
+  border-color: #32000c !important;
+}
