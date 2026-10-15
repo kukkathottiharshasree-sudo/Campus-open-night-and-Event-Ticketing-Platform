@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #D8BFD8;
+  background:#e6e6fa;
   color: #171525;
 }
 
@@ -18,7 +18,7 @@ select {
 
 .navbar {
   height: 70px;
-  background: white;
+  background:#e6e6fa;
   border-bottom: 1px solid #e5e2ee;
 
   display: flex;
@@ -62,7 +62,7 @@ select {
 
 .nav-ticket {
   background:	#3563e9!important;
-  color: white !important;
+  color: #e6e6fa !important;
 
   padding: 11px 18px;
   border-radius: 8px;
@@ -144,7 +144,7 @@ select {
 }
 
 .primary-button {
-  background: white;
+  background: #e6e6fa;
   color: #3563e9;
 
   padding: 14px 22px;
@@ -177,7 +177,7 @@ select {
 
   grid-template-columns: repeat(4, 1fr);
 
-  background: white;
+  background:#e6e6fa;
 
   border-bottom: 1px solid #e5e2ee;
 }
@@ -245,7 +245,7 @@ select {
 
   border-radius: 9px;
 
-  background: white;
+  background: #e6e6fa;
 
   outline: none;
 }
@@ -269,7 +269,7 @@ select {
 }
 
 .event-card {
-  background: white;
+  background:#e6e6fa;
 
   border: 1px solid #e4e1eb;
 
