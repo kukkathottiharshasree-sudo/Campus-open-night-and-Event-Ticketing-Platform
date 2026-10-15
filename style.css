@@ -632,3 +632,54 @@ footer h3 {
     width: 100%;
   }
 }
+body {
+  background-color: #e6e6fa;
+}
+
+/* Get Ticket and main action buttons */
+.nav-ticket,
+.book-btn,
+.primary-button,
+.confirm-button,
+.print-button {
+  background-color: #4a0012 !important;
+  background: #4a0012 !important;
+  color: #ffffff !important;
+  border-color: #4a0012 !important;
+}
+
+/* Button hover color */
+.nav-ticket:hover,
+.book-btn:hover,
+.primary-button:hover,
+.confirm-button:hover,
+.print-button:hover {
+  background-color: #32000c !important;
+  background: #32000c !important;
+  color: #ffffff !important;
+}
+
+/* Pink statistics background */
+.statistics,
+.stat {
+  background-color: #ffb6c1 !important;
+  background: #ffb6c1 !important;
+}
+
+/* Statistics text */
+.stat h2 {
+  color: #800020 !important;
+}
+
+.stat p {
+  color: #4a0012 !important;
+}
+
+/* Statistics borders */
+.stat {
+  border-right: 1px solid #f08ca0;
+}
+
+.stat:last-child {
+  border-right: none;
+}
