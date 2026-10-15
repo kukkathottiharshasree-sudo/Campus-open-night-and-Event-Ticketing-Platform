@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background:#e6e6fa;
+  background: #e6e6fa;
   color: #171525;
 }
 
@@ -18,22 +18,19 @@ select {
 
 .navbar {
   height: 70px;
-  background:#e6e6fa;
+  background: #e6e6fa;
   border-bottom: 1px solid #e5e2ee;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 0 6%;
-
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .logo {
-  color: 	#3563e9;
+  color: #3563e9;
   font-size: 23px;
   font-weight: bold;
 }
@@ -61,24 +58,22 @@ select {
 }
 
 .nav-ticket {
-  background:	#3563e9!important;
-  color: #e6e6fa !important;
-
+  background: #4a0012 !important;
+  color: #ffffff !important;
   padding: 11px 18px;
   border-radius: 8px;
 }
 
+.nav-ticket:hover {
+  background: #32000c !important;
+}
 
 .hero {
   min-height: 520px;
-
   display: flex;
   align-items: center;
-
   padding: 80px 7%;
-
   color: white;
-
   background:
     radial-gradient(
       circle at 80% 20%,
@@ -106,13 +101,9 @@ select {
 
 .badge {
   display: inline-block;
-
   background: rgba(255,255,255,0.15);
-
   padding: 9px 15px;
-
   border-radius: 30px;
-
   margin-bottom: 25px;
 }
 
@@ -128,66 +119,55 @@ select {
 
 .hero p {
   max-width: 650px;
-
   color: #ded9f5;
-
   font-size: 18px;
-
   line-height: 1.7;
 }
 
 .hero-buttons {
   display: flex;
   gap: 12px;
-
   margin-top: 30px;
 }
 
 .primary-button {
-  background: #e6e6fa;
-  color: #3563e9;
-
+  background: #4a0012 !important;
+  color: #ffffff !important;
   padding: 14px 22px;
-
   border: none;
   border-radius: 9px;
-
   font-weight: bold;
-
   cursor: pointer;
+}
+
+.primary-button:hover {
+  background: #32000c !important;
 }
 
 .secondary-button {
   background: transparent;
   color: white;
-
   padding: 14px 22px;
-
   border: 1px solid rgba(255,255,255,0.4);
-
   border-radius: 9px;
-
   font-weight: bold;
-
   cursor: pointer;
 }
 
+/* Pink statistics section */
 .statistics {
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
-  background: #800020;
-
-  border-bottom: 1px solid #e5e2ee;
+  background: #ffb6c1;
+  border-bottom: 1px solid #f08ca0;
 }
 
 .stat {
   text-align: center;
-
   padding: 30px;
-
-  border-right: 1px solid #e5e2ee;
+  border-right: 1px solid rgba(128, 0, 32, 0.2);
+  background: #ffb6c1;
+  color: #4a0012;
 }
 
 .stat:last-child {
@@ -195,20 +175,18 @@ select {
 }
 
 .stat h2 {
-  color: #3563e9;
+  color: #800020;
   font-size: 32px;
 }
 
 .stat p {
-  color: #777487;
+  color: #4a0012;
   margin-top: 5px;
 }
-
 
 .container {
   width: 88%;
   max-width: 1200px;
-
   margin: auto;
 }
 
@@ -229,24 +207,18 @@ select {
   color: #777487;
 }
 
-
 .filters {
   display: flex;
   gap: 12px;
-
   margin-bottom: 30px;
 }
 
 .filters input,
 .filters select {
   padding: 14px;
-
   border: 1px solid #e3e0eb;
-
   border-radius: 9px;
-
   background: #e6e6fa;
-
   outline: none;
 }
 
@@ -258,28 +230,18 @@ select {
   width: 200px;
 }
 
-
 .event-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
+  grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
 .event-card {
-  background:#e6e6fa;
-
+  background: #e6e6fa;
   border: 1px solid #e4e1eb;
-
   border-radius: 16px;
-
   overflow: hidden;
-
-  box-shadow:
-    0 10px 30px rgba(30,20,70,0.07);
-
+  box-shadow: 0 10px 30px rgba(30,20,70,0.07);
   transition: 0.2s;
 }
 
@@ -289,68 +251,33 @@ select {
 
 .event-image {
   height: 180px;
-
   padding: 20px;
-
   display: flex;
   align-items: flex-end;
-
   color: white;
-
   font-size: 22px;
   font-weight: bold;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6c4df6,
-      #a855f7
-    );
+  background: linear-gradient(135deg, #6c4df6, #a855f7);
 }
 
 .event-card:nth-child(2) .event-image {
-  background:
-    linear-gradient(
-      135deg,
-      #0284c7,
-      #2563eb
-    );
+  background: linear-gradient(135deg, #0284c7, #2563eb);
 }
 
 .event-card:nth-child(3) .event-image {
-  background:
-    linear-gradient(
-      135deg,
-      #db2777,
-      #9333ea
-    );
+  background: linear-gradient(135deg, #db2777, #9333ea);
 }
 
 .event-card:nth-child(4) .event-image {
-  background:
-    linear-gradient(
-      135deg,
-      #059669,
-      #10b981
-    );
+  background: linear-gradient(135deg, #059669, #10b981);
 }
 
 .event-card:nth-child(5) .event-image {
-  background:
-    linear-gradient(
-      135deg,
-      #f59e0b,
-      #ea580c
-    );
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
 }
 
 .event-card:nth-child(6) .event-image {
-  background:
-    linear-gradient(
-      135deg,
-      #334155,
-      #0f172a
-    );
+  background: linear-gradient(135deg, #334155, #0f172a);
 }
 
 .event-body {
@@ -359,53 +286,39 @@ select {
 
 .event-meta {
   color: #3563e9;
-
   font-size: 12px;
-
   font-weight: bold;
-
   margin-bottom: 8px;
 }
 
 .event-body h3 {
   font-size: 20px;
-
   margin-bottom: 10px;
 }
 
 .event-description {
   color: #777487;
-
   font-size: 14px;
-
   line-height: 1.5;
-
   margin-bottom: 15px;
 }
 
 .event-info {
   display: grid;
-
   gap: 7px;
-
   color: #666;
-
   font-size: 13px;
-
   margin-bottom: 18px;
 }
 
 .event-footer {
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
 }
 
 .price {
   font-size: 18px;
-
   font-weight: bold;
 }
 
@@ -413,31 +326,25 @@ select {
   color: #16a34a;
 }
 
+/* Dark burgundy Get Ticket buttons */
 .book-btn {
-  background: #3563e9;
-
-  color: white;
-
+  background: #4a0012 !important;
+  color: #ffffff !important;
   border: none;
-
   padding: 10px 15px;
-
   border-radius: 8px;
-
   font-weight: bold;
-
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .book-btn:hover {
-  background: #5335d0;
+  background: #32000c !important;
 }
 
 .dashboard {
   background: #171525;
-
   color: white;
-
   padding: 75px 0;
 }
 
@@ -447,20 +354,14 @@ select {
 
 .dashboard-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 .dashboard-card {
   background: #252138;
-
   border: 1px solid #3a3450;
-
   border-radius: 14px;
-
   padding: 25px;
 }
 
@@ -470,28 +371,18 @@ select {
 
 .dashboard-card h3 {
   font-size: 35px;
-
   margin-top: 8px;
-
   color: white;
 }
 
-
 .modal {
   position: fixed;
-
   inset: 0;
-
   background: rgba(10,8,20,0.75);
-
   display: none;
-
   align-items: center;
-
   justify-content: center;
-
   padding: 20px;
-
   z-index: 500;
 }
 
@@ -501,99 +392,64 @@ select {
 
 .modal-box {
   width: 100%;
-
   max-width: 500px;
-
   max-height: 90vh;
-
   overflow-y: auto;
-
   background: white;
-
   border-radius: 18px;
-
   padding: 30px;
-
   position: relative;
 }
 
 .close-button {
   position: absolute;
-
   right: 18px;
-
   top: 18px;
-
   width: 35px;
-
   height: 35px;
-
   border: none;
-
   border-radius: 50%;
-
   background: #f0eef5;
-
   font-size: 22px;
-
   cursor: pointer;
 }
 
 .selected-event {
-  color:#3563e9;
-
+  color: #3563e9;
   font-weight: bold;
-
   margin: 8px 0 25px;
 }
 
 .modal-box label {
   display: block;
-
   font-weight: bold;
-
   margin-top: 15px;
-
   margin-bottom: 7px;
 }
 
 .modal-box input {
   width: 100%;
-
   padding: 13px;
-
   border: 1px solid #ddd9e6;
-
   border-radius: 8px;
-
   outline: none;
 }
 
 .quantity {
   display: flex;
-
   align-items: center;
-
   gap: 15px;
-
   margin-top: 8px;
 }
 
 .quantity button {
   width: 36px;
-
   height: 36px;
-
   border: none;
-
   border-radius: 7px;
-
   background: #eeeaff;
-
-  color:#3563e9;
-
+  color: #3563e9;
   font-size: 20px;
-
   cursor: pointer;
 }
 
@@ -603,146 +459,107 @@ select {
 
 .total {
   display: flex;
-
   justify-content: space-between;
-
   border-top: 1px solid #ddd9e6;
-
   margin-top: 20px;
-
   padding: 18px 0;
-
   font-size: 18px;
 }
 
 .confirm-button {
   width: 100%;
-
   padding: 14px;
-
   border: none;
-
   border-radius: 8px;
-
-  background: #3563e9;
-
-  color: white;
-
+  background: #4a0012 !important;
+  color: white !important;
   font-weight: bold;
-
   cursor: pointer;
 }
 
+.confirm-button:hover {
+  background: #32000c !important;
+}
 
 .ticket-box {
   text-align: center;
 }
 
 .ticket-logo {
-  color: 	#3563e9;
-
+  color: #3563e9;
   font-size: 28px;
-
   margin-bottom: 5px;
 }
 
 .ticket-box > p {
   color: #777487;
-
   font-size: 13px;
-
   margin-bottom: 20px;
 }
 
 .ticket-box hr {
   border: none;
-
   border-top: 1px dashed #ddd9e6;
-
   margin-bottom: 20px;
 }
 
 .ticket-box h3 {
   font-size: 23px;
-
   margin-bottom: 18px;
 }
 
 .ticket-details {
   line-height: 2;
-
   color: #555;
 }
 
 .fake-qr {
   width: 130px;
-
   height: 130px;
-
   margin: 20px auto;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
-  background:
-    repeating-linear-gradient(
-      45deg,
-      #111 0px,
-      #111 3px,
-      white 3px,
-      white 7px
-    );
-
+  background: repeating-linear-gradient(
+    45deg,
+    #111 0px,
+    #111 3px,
+    white 3px,
+    white 7px
+  );
   border: 8px solid white;
-
   outline: 1px solid #ccc;
-
   color: white;
-
   font-size: 12px;
-
   font-weight: bold;
 }
 
 .ticket-id {
   background: #f3f1f7;
-
   padding: 10px;
-
   border-radius: 7px;
-
   font-family: monospace;
-
   margin-bottom: 15px;
 }
 
 .print-button {
-  background: #171525;
-
-  color: white;
-
+  background: #4a0012 !important;
+  color: white !important;
   border: none;
-
   padding: 11px 18px;
-
   border-radius: 8px;
-
   cursor: pointer;
 }
 
+.print-button:hover {
+  background: #32000c !important;
+}
 
 footer {
   background: #0e0c16;
-
   color: #aaa7b9;
-
   text-align: center;
-
   padding: 35px;
-
   line-height: 1.8;
 }
 
@@ -751,7 +568,6 @@ footer h3 {
 }
 
 @media (max-width: 850px) {
-
   .hero h1 {
     font-size: 45px;
   }
@@ -767,12 +583,9 @@ footer h3 {
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
-
 }
 
-
 @media (max-width: 600px) {
-
   .nav-links button:not(.nav-ticket) {
     display: none;
   }
@@ -800,12 +613,9 @@ footer h3 {
   .filters select {
     width: 100%;
   }
-
 }
 
-
 @media print {
-
   body * {
     visibility: hidden;
   }
@@ -817,11 +627,8 @@ footer h3 {
 
   .ticket-box {
     position: absolute;
-
     left: 0;
     top: 0;
-
     width: 100%;
   }
-
 }
