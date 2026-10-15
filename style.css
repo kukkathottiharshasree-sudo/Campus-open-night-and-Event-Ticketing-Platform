@@ -683,3 +683,35 @@ body {
 .stat:last-child {
   border-right: none;
 }
+
+.events-section {
+  background-color: #e6e6fa;
+}
+
+.events-section .event-card {
+  background-color: #fadadd !important;
+}
+
+.events-section .event-body {
+  background-color: #fadadd !important;
+}
+
+/* Event card text */
+.events-section .event-body h3 {
+  color: #4a0012;
+}
+
+.events-section .event-description,
+.events-section .event-info {
+  color: #4a0012;
+}
+
+/* Keep Get Ticket buttons dark burgundy */
+.events-section .book-btn {
+  background-color: #4a0012 !important;
+  color: #ffffff !important;
+}
+
+.events-section .book-btn:hover {
+  background-color: #32000c !important;
+}
